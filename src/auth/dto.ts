@@ -1,0 +1,55 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsNotEmpty } from 'class-validator';
+
+export class SignUpBodyDto {
+  @ApiProperty({
+    example: 'mail@gmail.com',
+  })
+  @IsEmail()
+  email: string;
+
+  @ApiProperty({
+    example: '1234',
+  })
+  @IsNotEmpty()
+  password: string;
+
+  @ApiProperty({
+    example: 'Alexander',
+  })
+  @IsNotEmpty()
+  firstName: string;
+
+  @ApiProperty({
+    example: 'Gorlenko',
+  })
+  @IsNotEmpty()
+  lastName: string;
+}
+
+export class SignInBodyDto {
+  @ApiProperty({
+    example: 'mail@gmail.com',
+  })
+  @IsEmail()
+  email: string;
+
+  @ApiProperty({
+    example: '1234',
+  })
+  @IsNotEmpty()
+  password: string;
+}
+
+export class GetSessionInfoDto {
+  @ApiProperty()
+  id: number;
+
+  @ApiProperty()
+  email: string;
+
+  @ApiProperty()
+  'iat': number;
+  @ApiProperty()
+  'exp': number;
+}
